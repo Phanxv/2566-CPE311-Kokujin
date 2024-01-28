@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5E4F4F"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/ShootButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:backgroundTint="#5E4F4F"
+        android:scaleType="fitCenter"
+        android:src="@drawable/shoot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/UpButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#5E4F4F"
+        android:scaleType="fitCenter"
+        android:src="@drawable/direction"
+        app:layout_constraintBottom_toTopOf="@+id/ShootButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/BottomButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#5E4F4F"
+        android:rotation="-180"
+        android:scaleType="fitCenter"
+        android:src="@drawable/direction"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ShootButton" />
+
+    <ImageButton
+        android:id="@+id/LeftButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="#5E4F4F"
+        android:rotation="-90"
+        android:scaleType="fitCenter"
+        android:src="@drawable/direction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ShootButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/RightButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="30dp"
+        android:backgroundTint="#5E4F4F"
+        android:rotation="90"
+        android:scaleType="fitCenter"
+        android:src="@drawable/direction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ShootButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
