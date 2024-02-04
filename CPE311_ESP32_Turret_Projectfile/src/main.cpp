@@ -131,12 +131,10 @@ void actionTask(void *pvParameters)
         if(*pvPayload == 1)
         {
             digitalWrite(LED_BUILTIN, HIGH);
-            Serial.println("LED ON");
         }
         else if(*pvPayload == 2)
         {
             digitalWrite(LED_BUILTIN, LOW);
-            Serial.println("LED OFF");
         }
     }
 }
