@@ -5,21 +5,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
 
+public class MainActivity extends AppCompatActivity {
+    private static String BROKER_URL = "";
+    private static final String CLIENT_ID = "ControlApp";
+    private MqttHandler mqttHandler;
+    private String connectToastMsg = "";
     ImageButton ShootButton;
     ImageButton UpButton;
     ImageButton BottomButton;
     ImageButton LeftButton;
     ImageButton RightButton;
+    Button ConnectButton;
+    EditText addressTextField;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mqttHandler = new MqttHandler();
         ShootButton = (ImageButton) findViewById(R.id.ShootButton);
         ShootButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -85,5 +97,33 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+        MqttConnectOptions options = new MqttConnectOptions();
+        options.setCleanSession(true);
+        options.setKeepAliveInterval(60);
+        ConnectButton = (Button) findViewById(R.id.connect_btn);
+        addressTextField = (EditText) findViewById(R.id.serverAddress);
+        ConnectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BROKER_URL = addressTextField.getText().toString();
+                connectToastMsg = "Connected to : " + BROKER_URL;
+                mqttHandler.connect(BROKER_URL,CLIENT_ID);
+                publishMessage("ControlApp/Connection","CONNECTED");
+                Toast.makeText(MainActivity.this, connectToastMsg, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void publishMessage(String topic, String message){
+        Toast.makeText(this, "Publishing message: " + message, Toast.LENGTH_SHORT).show();
+        mqttHandler.publish(topic,message);
+    }
+    private void subscribeToTopic(String topic){
+        Toast.makeText(this, "Subscribing to topic "+ topic, Toast.LENGTH_SHORT).show();
+        mqttHandler.subscribe(topic);
+    }
+    @Override
+    protected void onDestroy() {
+        mqttHandler.disconnect();
+        super.onDestroy();
     }
 }

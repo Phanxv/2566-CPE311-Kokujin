@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5E4F4F"
+    android:background="#E1F5FE"
     tools:context=".MainActivity">
 
     <ImageButton
         android:id="@+id/ShootButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:backgroundTint="#5E4F4F"
+        android:backgroundTint="#E1F5FE"
         android:scaleType="fitCenter"
         android:src="@drawable/shoot"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +25,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="#5E4F4F"
+        android:backgroundTint="#E1F5FE"
         android:scaleType="fitCenter"
         android:src="@drawable/direction"
         app:layout_constraintBottom_toTopOf="@+id/ShootButton"
@@ -37,7 +37,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="#5E4F4F"
+        android:backgroundTint="#E1F5FE"
         android:rotation="-180"
         android:scaleType="fitCenter"
         android:src="@drawable/direction"
@@ -50,7 +50,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginEnd="30dp"
-        android:backgroundTint="#5E4F4F"
+        android:backgroundTint="#E1F5FE"
         android:rotation="-90"
         android:scaleType="fitCenter"
         android:src="@drawable/direction"
@@ -63,12 +63,46 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
-        android:backgroundTint="#5E4F4F"
+        android:backgroundTint="#E1F5FE"
         android:rotation="90"
         android:scaleType="fitCenter"
         android:src="@drawable/direction"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ShootButton"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/serverAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="Server address"
+        android:inputType="text"
+        android:text="tcp://"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/connect_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BottomButton" />
+
+    <Button
+        android:id="@+id/connect_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Connect"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/serverAddress"
+        app:layout_constraintTop_toTopOf="@+id/serverAddress" />
+
+    " />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
