@@ -37,10 +37,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction()==MotionEvent.ACTION_DOWN){
-                    Toast.makeText(MainActivity.this, "SHOOT PRESS", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "SHOOT PRESS", Toast.LENGTH_SHORT).show();
+                    publishMessage("ControlApp/Command","SHOOT");
+                    return false;
                 }
-                else{
-                    Toast.makeText(MainActivity.this, "SHOOT RELEASE", Toast.LENGTH_SHORT).show();
+                else if (event.getAction() == MotionEvent.ACTION_UP){
+                    //Toast.makeText(MainActivity.this, "SHOOT RELEASE", Toast.LENGTH_SHORT).show();
+                    publishMessage("ControlApp/Command","STOP");
+                    return false;
                 }
                 return true;
             }
@@ -50,10 +54,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction()==MotionEvent.ACTION_DOWN){
-                    Toast.makeText(MainActivity.this, "UP PRESS", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "UP PRESS", Toast.LENGTH_SHORT).show();
+                    publishMessage("ControlApp/Command","UP");
+                    return false;
                 }
-                else{
-                    Toast.makeText(MainActivity.this, "UP RELEASE", Toast.LENGTH_SHORT).show();
+                else if (event.getAction() == MotionEvent.ACTION_UP){
+                    //Toast.makeText(MainActivity.this, "UP RELEASE", Toast.LENGTH_SHORT).show();
+                    publishMessage("ControlApp/Command","STOP");
+                    return false;
                 }
                 return true;
             }
@@ -63,10 +71,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction()==MotionEvent.ACTION_DOWN){
-                    Toast.makeText(MainActivity.this, "DOWN PRESS", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "DOWN PRESS", Toast.LENGTH_SHORT).show();
+                    publishMessage("ControlApp/Command","DOWN");
+                    return false;
                 }
-                else{
-                    Toast.makeText(MainActivity.this, "DOWN RELEASE", Toast.LENGTH_SHORT).show();
+                else if (event.getAction() == MotionEvent.ACTION_UP){
+                    //Toast.makeText(MainActivity.this, "DOWN RELEASE", Toast.LENGTH_SHORT).show();
+                    publishMessage("ControlApp/Command","STOP");
+                    return false;
                 }
                 return true;
             }
@@ -76,10 +88,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction()==MotionEvent.ACTION_DOWN){
-                    Toast.makeText(MainActivity.this, "LEFT PRESS", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "LEFT PRESS", Toast.LENGTH_SHORT).show();
+                    publishMessage("ControlApp/Command","LEFT");
+                    return false;
                 }
-                else{
-                    Toast.makeText(MainActivity.this, "LEFT RELEASE", Toast.LENGTH_SHORT).show();
+                else if (event.getAction() == MotionEvent.ACTION_UP){
+                    //Toast.makeText(MainActivity.this, "LEFT RELEASE", Toast.LENGTH_SHORT).show();
+                    publishMessage("ControlApp/Command","STOP");
+                    return false;
                 }
                 return true;
             }
@@ -89,10 +105,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction()==MotionEvent.ACTION_DOWN){
-                    Toast.makeText(MainActivity.this, "RIGHT PRESS", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "RIGHT PRESS", Toast.LENGTH_SHORT).show();
+                    publishMessage("ControlApp/Command","RIGHT");
+                    return false;
                 }
-                else{
-                    Toast.makeText(MainActivity.this, "RIGHT RELEASE", Toast.LENGTH_SHORT).show();
+                else if (event.getAction() == MotionEvent.ACTION_UP){
+                    //Toast.makeText(MainActivity.this, "RIGHT RELEASE", Toast.LENGTH_SHORT).show();
+                    publishMessage("ControlApp/Command","STOP");
+                    return false;
                 }
                 return true;
             }
@@ -114,15 +134,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void publishMessage(String topic, String message){
-        Toast.makeText(this, "Publishing message: " + message, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Publishing message: " + message, Toast.LENGTH_SHORT).show();
         mqttHandler.publish(topic,message);
     }
     private void subscribeToTopic(String topic){
-        Toast.makeText(this, "Subscribing to topic "+ topic, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Subscribing to topic "+ topic, Toast.LENGTH_SHORT).show();
         mqttHandler.subscribe(topic);
     }
     @Override
     protected void onDestroy() {
+        publishMessage("ControlApp/Connection", "DISCONNECTED");
         mqttHandler.disconnect();
         super.onDestroy();
     }
