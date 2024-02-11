@@ -1,4 +1,4 @@
-# CPE-311 TURRENT PROJECT
+# CPE-311 TURRET PROJECT
 ## About our project
 
 What is a turret? To simplified it's a way to control weapon from a distance. In our project it's a robot that shoot out nerf bullet controlled by mobile phone application. Our concept of remote controlled turret got inspiration from [Sentry gun](https://wiki.teamfortress.com/wiki/Sentry_Gun) from the video game Team Fortress and [Kill joy's turret](https://valorant.fandom.com/wiki/Turret) form the video game Valorant.
