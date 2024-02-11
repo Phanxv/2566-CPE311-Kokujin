@@ -5,7 +5,7 @@ What is a turret? To simplified it's a way to control weapon from a distance. In
 
 Our goal is to develop an application-controlled turret system. The design is inspired by the Bluetooth Nerf turret created by user [Little french robot](https://www.youtube.com/c/littlefrenchrobot) on YouTube.
 
-#### Project Plan :
+## Project Plan :
 ![projectplan](https://github.com/Phanxv/2566-CPE311-Kokujin/assets/152508503/6620b665-d0c2-4eea-89c3-b06785178c7f)
 
 
@@ -18,7 +18,7 @@ Our goal is to develop an application-controlled turret system. The design is in
 - Shoot nerf bullet by motor.
 - Control by mobile application via MQTT protocol.
   
-#### Diagram :
+## Diagram :
 ![diagram](https://github.com/Phanxv/2566-CPE311-Kokujin/assets/152508503/8f724948-c476-455c-bf82-6836938f145d)
 
 ## Turret :
